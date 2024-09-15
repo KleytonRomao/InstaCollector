@@ -20,10 +20,18 @@ def index():
                 # Mova as postagens para o diretório estático
                 os.rename(username, f'static/{username}')
                 
+                # Apagar o que não seja foto
+                for item in os.listdir(f'static/{username}'):
+                    file_path = os.path.join(f'static/{username}', item)
+                    
+                    if os.path.isfile(file_path) and not item.lower().endswith('.jpg'):
+                        os.remove(file_path)
+
                 return redirect(url_for('profile', username=username))
             except Exception as e:
                 return f'Erro ao baixar o perfil: {e}'
     return render_template('index.html')
+
 
 @app.route('/profile/<username>')
 def profile(username):
