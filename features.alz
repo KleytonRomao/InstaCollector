@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<heimer-mind-map version="3.6.4">
+ <color g="189" r="186" b="182"/>
+ <edge-color g="0" r="0" b="0"/>
+ <grid-color g="160" r="160" b="164"/>
+ <arrow-size>10000</arrow-size>
+ <edge-width>2000</edge-width>
+ <font-family overline="0" strike-out="0" italic="0" weight="50" underline="0" bold="0">Sans Serif</font-family>
+ <text-size>11000</text-size>
+ <corner-radius>5000</corner-radius>
+ <graph>
+  <node w="329000" x="-110338" y="15560" h="75000" index="2">
+   <text>criar um deshboard para outras funçoes
+</text>
+   <color g="0" r="164" b="0"/>
+   <text-color g="255" r="255" b="255"/>
+  </node>
+  <node w="200000" x="-111752" y="-87704" h="75000" index="0">
+   <text>arrumar cores e textos</text>
+   <color g="0" r="164" b="0"/>
+   <text-color g="255" r="255" b="255"/>
+  </node>
+  <node w="200000" x="-110338" y="-190969" h="75000" index="1">
+   <text>arumar profile html
+</text>
+   <color g="0" r="164" b="0"/>
+   <text-color g="255" r="255" b="255"/>
+  </node>
+ </graph>
+ <layout-optimizer min-edge-length="100000" aspect-ratio="1000"/>
+</heimer-mind-map>

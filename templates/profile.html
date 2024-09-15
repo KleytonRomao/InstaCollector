@@ -1,0 +1,19 @@
+CTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile</title>
+</head>
+<body>
+    <h1>Instagram Profile: {{ username }}</h1>
+    <a href="{{ url_for('index') }}">Back</a>
+    <div>
+        {% for file in files %}
+            <img src="{{ url_for('static', filename=username + '/' + file) }}" alt="Post Image" style="width: 200px; margin: 10px;">
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
