@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_file
 import instaloader
 import os
+import zipfile
 
 app = Flask(__name__)
 loader = instaloader.Instaloader()
@@ -37,7 +38,25 @@ def index():
 def profile(username):
     # Lista de postagens para exibir
     files = os.listdir(f'static/{username}')
-    return render_template('profile.html', username=username, files=files)
+    
+    # Cria o arquivo ZIP
+    zip_filename = f'static/{username}.zip'
+    with zipfile.ZipFile(zip_filename, 'w') as zipf:
+        for file in files:
+            file_path = os.path.join(f'static/{username}', file)
+            if os.path.isfile(file_path):
+                zipf.write(file_path, arcname=file)
+    
+    return render_template('profile.html', username=username, files=files, zip_filename=zip_filename)
+
+
+@app.route('/download/<username>')
+def download(username):
+    zip_filename = f'static/{username}.zip'
+    if os.path.exists(zip_filename):
+        return send_file(zip_filename, as_attachment=True)
+    else:
+        return 'Arquivo ZIP não encontrado', 404
 
 if __name__ == '__main__':
     app.run(debug=True)
