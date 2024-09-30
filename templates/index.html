@@ -12,15 +12,14 @@
             box-sizing: border-box;
         }
 
-        /* General body styles */
+        
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
             color: #333;
             text-align: center;
         }
-
-        /* Header styles */
+        
         header {
             background-color: #235347;
             color: white;
@@ -60,9 +59,8 @@
             text-decoration: underline;
         }
 
-        /* Main section styles */
         main {
-            padding: 80px 20px 20px; /* Adjusted for fixed header */
+            padding: 80px 20px 20px;
         }
 
         main .container {
@@ -83,7 +81,7 @@
             margin-bottom: 20px;
         }
 
-        /* Form styles */
+        
         form {
             display: flex;
             flex-direction: column;
@@ -117,6 +115,27 @@
         button:hover {
             background-color: #0B2B26;
         }
+
+        
+        #loader {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .spinner {
+            border: 4px solid white;
+            border-radius: 50%;
+            border-top: 4px solid #235347;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -128,10 +147,25 @@
     <main>
         <div class="container">
             <h2>Download Instagram Posts</h2>
-            <form method="post">
+            <form method="post" id="downloadForm">
                 <label for="username">Instagram Username:</label>
                 <input type="text" id="username" name="username" required>
                 <button type="submit">Download Posts</button>
             </form>
+
+            <!-- Loader -->
+            <div id="loader">
+                <div class="spinner"></div>
+                <p>Loading...</p>
+            </div>
         </div>
+    </main>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function() {
+            // Show the loader
+            document.getElementById('loader').style.display = 'block';
+        });
+    </script>
+</body>
 </html>
